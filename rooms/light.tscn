@@ -63,7 +63,7 @@ energy = 0.0
 shadow_enabled = true
 shadow_gradient_length = 2.0
 
-[node name="Area2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
