@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://rooms/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://characters/player/Player.tscn" type="PackedScene" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://characters/Wumpus.tscn" type="PackedScene" id=4]
 [ext_resource path="res://UI.gd" type="Script" id=5]
 [ext_resource path="res://Main.gd" type="Script" id=6]
+[ext_resource path="res://characters/slime/Slime.tscn" type="PackedScene" id=7]
+[ext_resource path="res://characters/bats/Bats.tscn" type="PackedScene" id=8]
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 6 )
@@ -88,11 +90,23 @@ position = Vector2( 292, 287 )
 position = Vector2( 424, 293 )
 
 [node name="Wumpus" parent="." instance=ExtResource( 4 )]
-position = Vector2( 188, 168 )
+position = Vector2( 161, 157 )
+
+[node name="Bats" parent="." instance=ExtResource( 8 )]
+position = Vector2( 296, -109 )
+
+[node name="Slime" parent="." instance=ExtResource( 7 )]
+position = Vector2( 426, 292 )
 
 [connection signal="defeat" from="Wumpus" to="UI" method="_on_Wumpus_defeat"]
 [connection signal="warning_enter" from="Wumpus" to="UI" method="_on_Wumpus_warning_enter"]
 [connection signal="warning_exit" from="Wumpus" to="UI" method="_on_Wumpus_warning_exit"]
 [connection signal="win" from="Wumpus" to="UI" method="_on_Wumpus_win"]
+[connection signal="collision" from="Bats" to="UI" method="_on_Bats_collision"]
+[connection signal="warning_enter" from="Bats" to="UI" method="_on_Bats_warning_enter"]
+[connection signal="warning_exit" from="Bats" to="UI" method="_on_Bats_warning_exit"]
+[connection signal="collision" from="Slime" to="UI" method="_on_Slime_collision"]
+[connection signal="warning_enter" from="Slime" to="UI" method="_on_Slime_warning_enter"]
+[connection signal="warning_exit" from="Slime" to="UI" method="_on_Slime_warning_exit"]
 
 [editable path="Lights/Light"]
